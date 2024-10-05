@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>問い合わせ | cafe Cat’ Whiskers</title>
+    <meta name="description" content="紅茶専門のカフェ「Cat’ Whiskers」のWebサイトです。">
+    <meta name="keywords" content="紅茶,カフェ,シングルオリジン,猫のひげ">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script> <!--jQuery本体-->
+    <script src="./js/jquery.validate.min.js"></script> <!--validationプラグイン-->
+    <script src="https://yubinbango.github.io/yubinbango/yubinbango.js"></script> <!--yubinbangoプラグイン-->
+    <script src="https://kit.fontawesome.com/09bc1f0a04.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./icomoon/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Carattere&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- グローバルナビゲーション -->
+    <script>
+        $(function () {
+            $('#nav-toggle').on("click", function () {
+                $('body').toggleClass('open');
+            });
+            $('.move').on("click", function () {
+                $('body').toggleClass('open');
+            });
+        });
+    </script>
+    <!-- スムーススクロール -->
+    <script>
+        $(function () {
+            $('.move').on("click", function () {
+                let href = $(this).attr("href");
+                let target = $(href);
+                let position = target.offset().top;
+                $('body,html').animate({ scrollTop: position }, 400, 'swing');
+                return false;
+            });
+        });
+    </script>
+    <!-- エラーチェック -->
+    <script>
+        $(function () {
+            $("#form").validate({
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    tell: {
+                        required: true
+                    },
+                    email: {
+                        required: true
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "お名前の入力を行ってください。"
+                    },
+                    tell: {
+                        required: "電話番号を入力してください。"
+                    },
+                    email: {
+                        required: "Eメールアドレスを入力してください。"
+                    }
+                }
+            });
+        });
+    </script>
+    <!-- フロートボタン -->
+    <script>    
+            $(function () {
+                $(window).on("scroll", function () {
+                    if ($(this).scrollTop() > 100) {
+                        $(".float-btn-wrap").fadeIn(300);
+                    } else {
+                        $(".float-btn-wrap").fadeOut(300);
+                    }
+                });
+            });
+        </script> 
+    <!-- モーダルウィンドウ -->      
+    <script>
+        //モーダル
+        //表示範囲設定
+        $(function () {
+            let modal_class = ".modal";
+            $(modal_class).css({
+                position: "absolute",
+                width: "100%",
+                height: "100vh",
+                top: "0",
+                left: "0",
+                display: "none" //最初は非表示
+            });
+            // 背景色(半透明の黒)
+            let bw_class = ".background_window";
+            $(bw_class).css({
+                position: "fixed",
+                top: "0",
+                left: "0",
+                backgroundColor: "rgba(50,50,50,.9)",
+                width: "100%",
+                height: "100vh",
+                zIndex: "9990"
+            });
+            //表示内容
+            let iv_class = ".modal_base";
+            $(iv_class).css({
+                position: "fixed",
+                top: "calc(100px + 2em)",
+                left: "50%",
+                transform: "translate(-50%, 0)",
+                zIndex: "9998",
+                backgroundColor: "#fff",
+            });
+            // }
+            //開くときの処理
+            $(".modal_open").on("click", function () {
+                $("#modal_window").fadeIn();
+            });
+            //閉じるときの処理
+            $("#modal_close").on("click", function () {
+                $("#modal_window").fadeOut();
+            });
+        });
+    </script>
+                      
+</head>
+
+<body id="contact">
+    <header id="page-header">
+        <div class="inner">
+                <h1 class="logo">
+                    <a href="./index.html"><span class="icon-logo"></span></a>
+                </h1>
+
+            <div id="nav-toggle" class="sp">
+                <div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <nav class="header-nav">
+                    <div>
+                        <ul>
+                            <li>
+                                <a href="./index.html#news" class="move">お知らせ</a>
+                            </li>
+                            <li>
+                                <a href="./index.html#about" class="move">Cat’s Whiskersについて</a>
+                            </li>
+                            <li>
+                                <a href="./index.html#menu" class="move">メニュー</a>
+                            </li>
+                            <li>
+                                <a href="./about.html" class="move">店舗情報</a>
+                            </li>
+                            <li>
+                                <a href="./contact.html" class="move">お問合せ</a>
+                            </li>
+                        </ul>
+                        <ul class="sns_nav">
+                            <li>
+                                <a href="#">
+                                    <img src="./img/icon_in_fff.svg" alt="instagram">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="./img/icon_x_fff.svg" alt="x(旧twitter)">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                
+        </div>
+    </header>
+
+    <main>
+        <div class="wrapper">
+            <section>
+                <div class="inner">
+                    <div class="layer layer-bg">
+                        <h2 class="layer-text">
+                            <span>Contact</span>お問合せ</h2>
+                    </div>
+                    <form action="" method="POST" id="form" class="h-adr">
+                        <span><span class="p-country-name" style="display:none;">Japan</span></span>
+                        <dl>
+                            <dt>
+                                <label for="name">お名前※</label>
+                            </dt>
+                            <dd>
+                                <input type="text" name="name" id="name" placeholder="例：茶猫あつこ">
+                            </dd>
+                            <dt>
+                                <label for="postnumber">郵便番号</label>
+                                <dd>
+                                    <input type="text" name="postnumber" id="postnumber" placeholder="例：3050000" value="" class="p-postal-code"/>
+                                </dd>
+                            </dt>
+                            <dt>
+                                <label for="pfef">都道府県（県）</label>
+                                <dd>
+                                    <input type="text" name="pref" id="pfef" value="" class="p-region" disabled/>
+                                </dd>
+                            </dt>
+                            <dt>
+                                <label for="pfef">都道府県（市町村以降）</label>
+                                <dd>
+                                    <input type="text" name="city" id="city" value="" class="p-locality p-street-address"disabled/>
+                                </dd>
+                            </dt>
+                            <dt>
+                                <label for="tell">電話番号※</label>
+                            </dt>
+                            <dd>
+                                <input type="tel" name="tell" id="tell" placeholder="例：029-000-0000">
+                            </dd>
+                            <dt>
+                                <label for="email">メールアドレス※</label>
+                            </dt>
+                            <dd>
+                                <input type="email" name="email" id="email" placeholder="例：shop@cafe_cats_wiskers.jp">
+                            </dd>
+                            <dt>
+                                <label for="message">お問合せ内容</label>
+                            </dt>
+                            <dd>
+                                <textarea name="message" id="message" placeholder="お問い合わせ内容をご記入ください。" cols="30" rows="10"></textarea>
+                            </dd>
+                            <dt>
+                                <label for="agree">同意事項 ※
+                            </dt>
+                            <dd>
+                                <label for="agree">プライバシーポリシーに同意する</label>
+                                <input type="checkbox" name="agree" value="同意事項" id="agree">
+                                <br>
+                                <a href="#" class="check-policy modal_open">プライバシーポリシーのご確認はこちら</a>
+                            </dd>
+                        </dl>
+                        <p class="notes">
+                            <span>※</span>は必須項目です。</p>
+                        <input type="submit" value="送信する" class="btn">
+                    </form>
+                </div>
+            </section>
+            <!-- フローティングボタン -->
+            <div class="float-btn-wrap">
+                <a href="" class="float-btn">
+                    <i class="fa-solid fa-chevron-up"></i>
+                </a>
+            </div>               
+        </div>
+    </main>
+    <footer>
+            <p class="copyright">© 2024 cafe Cat's Whiskers. All rights reserved.</p>
+    </footer>
+
+    <!-- モーダルウィンドウ -->
+    <div class="modal" id="modal_window">
+        <!-- モーダルウィンドウが開いている時のオーバーレイ -->
+        <div class="background_window"></div>
+        <!-- モーダルウィンドウの中身 -->
+        <div class="modal_base">
+            <!-- 表示内容 -->
+            <h2>プライバシーポリシー</h2>
+            <div class="policy_wrap">
+                <h3>個人情報の利用目的</h3>
+                <p>当サイトでは、お問い合わせや記事へのコメントの際、名前やメールアドレス等の個人情報を入力いただく場合がございます。 取得した個人情報は、お問い合わせに対する回答や必要な情報を電子メールなどでご連絡する場合に利用させていただくものであり、これらの目的以外では利用いたしません。
+                </p>
+                <h3>個人情報の利用目的</h3>
+                <p>当サイトでは、お問い合わせや記事へのコメントの際、名前やメールアドレス等の個人情報を入力いただく場合がございます。 取得した個人情報は、お問い合わせに対する回答や必要な情報を電子メールなどでご連絡する場合に利用させていただくものであり、これらの目的以外では利用いたしません。
+                </p>
+                <h3>個人情報の利用目的</h3>
+                <p>当サイトでは、お問い合わせや記事へのコメントの際、名前やメールアドレス等の個人情報を入力いただく場合がございます。 取得した個人情報は、お問い合わせに対する回答や必要な情報を電子メールなどでご連絡する場合に利用させていただくものであり、これらの目的以外では利用いたしません。
+                </p>
+                <h3>個人情報の利用目的</h3>
+                <p>当サイトでは、お問い合わせや記事へのコメントの際、名前やメールアドレス等の個人情報を入力いただく場合がございます。 取得した個人情報は、お問い合わせに対する回答や必要な情報を電子メールなどでご連絡する場合に利用させていただくものであり、これらの目的以外では利用いたしません。
+                </p>
+            </div>
+            <img src="./img/close.svg" alt="" id="modal_close">
+        </div>
+    </div>
+        
+</body>
+
+</html>

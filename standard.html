@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定番メニュー | cafe Cat’ Whiskers</title>
+    <meta name="description" content="紅茶専門のカフェ「Cat’ Whiskers」のWebサイトです。">
+    <meta name="keywords" content="紅茶,カフェ,シングルオリジン,猫のひげ">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="./icomoon/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Carattere&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/09bc1f0a04.js" crossorigin="anonymous"></script>
+    <!-- グローバルナビゲーション -->
+    <script>
+        $(function () {
+            $('#nav-toggle').on("click", function () {
+                $('body').toggleClass('open');
+            });
+            $('.move').on("click", function () {
+                $('body').toggleClass('open');
+            });
+        });
+    </script>
+    <!-- スムーススクロール -->
+    <script>
+        $(function () {
+            $('.move').on("click", function () {
+                let href = $(this).attr("href");
+                let target = $(href);
+                let position = target.offset().top;
+                $('body,html').animate({ scrollTop: position }, 400, 'swing');
+                return false;
+            });
+
+
+            console.log($(window).scrollTop());
+            
+        });
+    </script>
+    <!-- フロートボタン -->
+    <script>    
+        $(function () {
+            $(window).on("scroll", function () {
+                if ($(this).scrollTop() > 100) {
+                    $(".float-btn-wrap").fadeIn(300);
+                } else {
+                    $(".float-btn-wrap").fadeOut(300);
+                }
+            });
+        });
+    </script>
+    <!-- モーダルウィンドウ -->
+    <script>
+        //モーダル
+        //表示範囲設定
+        $(function () {
+            let modal_class = ".modal";
+            $(modal_class).css({
+                position: "absolute",
+                width: "100%",
+                height: "100vh",
+                top: "0",
+                left: "0",
+                display: "none" //最初は非表示
+            });
+            // 背景色(半透明の黒)
+            let bw_class = ".background_window";
+            $(bw_class).css({
+                position: "fixed",
+                top: "0",
+                left: "0",
+                backgroundColor: "rgba(50,50,50,.9)",
+                width: "100%",
+                height: "100vh",
+                zIndex: "9990"
+            });
+            //表示内容
+            let iv_class = ".modal_base";
+            $(iv_class).css({
+                position: "fixed",
+                top: "calc(100px + 2em)",
+                left: "50%",
+                transform: "translate(-50%, 0)",
+                zIndex: "9998",
+                backgroundColor: "#d5e5f2",
+            });
+            // }
+            //開くときの処理
+            $(".modal_open").on("click", function () {
+                $("#modal_window").fadeIn();
+            });
+            //閉じるときの処理
+            $("#modal_close").on("click", function () {
+                $("#modal_window").fadeOut();
+            });
+        });
+    </script>
+</head>
+
+<body id="standard">
+    <header id="page-header">
+        <div class="inner">
+            <h1 class="logo">
+                <a href="./index.html">
+                    <span class="icon-logo"></span>
+                </a>
+            </h1>
+
+            <div id="nav-toggle" class="sp">
+                <div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <nav class="header-nav">
+                    <div>
+                        <ul>
+                            <li>
+                                <a href="./index.html#news" class="move">お知らせ</a>
+                            </li>
+                            <li>
+                                <a href="./index.html#about" class="move">Cat’s Whiskersについて</a>
+                            </li>
+                            <li>
+                                <a href="./index.html#menu" class="move">メニュー</a>
+                            </li>
+                            <li>
+                                <a href="./about.html" class="move">店舗情報</a>
+                            </li>
+                            <li>
+                                <a href="./contact.html" class="move">お問合せ</a>
+                            </li>
+                        </ul>
+                        <ul class="sns_nav">
+                            <li>
+                                <a href="#">
+                                    <img src="./img/icon_in_fff.svg" alt="instagram">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="./img/icon_x_fff.svg" alt="x(旧twitter)">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+        </div>
+    </header>
+
+    <main>
+        <div class="wrapper">
+            <section id="tea">
+                <div class="inner">
+                    <h2>
+                        <span>Tea</span>定番の紅茶</h2>
+                    <ul class="grid-blk">
+                        <li class="grid-item">
+                            <img src="./img/tea_leaf.jpg" alt="ダージリン">
+                            <h3>
+                                <span class="title">ダージリン</span>
+                                <br>
+                                <span class="price">Hot
+                                    <br>600円（税込み）</span>
+                            </h3>
+                            <img src="./img/open_with.svg" class="modal_open">
+                        </li>
+                        <li class="grid-item">
+                            <img src="./img/tea_leaf.jpg" alt="ダージリン">
+                            <h3>
+                                <span class="title">ダージリン</span>
+                                <br>
+                                <span class="price">Hot
+                                    <br>600円（税込み）</span>
+                            </h3>
+                            <img src="./img/open_with.svg" class="modal_open">
+                        </li>
+                        <li class="grid-item">
+                            <img src="./img/tea_leaf.jpg" alt="ダージリン">
+                            <h3>
+                                <span class="title">ダージリン</span>
+                                <br>
+                                <span class="price">Hot
+                                    <br>600円（税込み）</span>
+                            </h3>
+                            <img src="./img/open_with.svg" class="modal_open">
+                        </li>
+                        <li class="grid-item">
+                            <img src="./img/tea_leaf.jpg" alt="ダージリン">
+                            <h3>
+                                <span class="title">ダージリン</span>
+                                <br>
+                                <span class="price">Hot
+                                    <br>600円（税込み）</span>
+                            </h3>
+                            <img src="./img/open_with.svg" class="modal_open">
+                        </li>
+                        <li class="grid-item">
+                            <img src="./img/tea_leaf.jpg" alt="ダージリン">
+                            <h3>
+                                <span class="title">ダージリン</span>
+                                <br>
+                                <span class="price">Hot
+                                    <br>600円（税込み）</span>
+                            </h3>
+                            <img src="./img/open_with.svg" class="modal_open">
+                        </li>
+                        <li class="grid-item">
+                            <img src="./img/tea_leaf.jpg" alt="ダージリン">
+                            <h3>
+                                <span class="title">ダージリン</span>
+                                <br>
+                                <span class="price">Hot
+                                    <br>600円（税込み）</span>
+                            </h3>
+                            <img src="./img/open_with.svg" class="modal_open">
+                        </li>
+                        <li class="grid-item">
+                            <img src="./img/tea_leaf.jpg" alt="ダージリン">
+                            <h3>
+                                <span class="title">ダージリン</span>
+                                <br>
+                                <span class="price">Hot
+                                    <br>600円（税込み）</span>
+                            </h3>
+                            <img src="./img/open_with.svg" class="modal_open">
+                        </li>
+                        <li class="grid-item">
+                            <img src="./img/tea_leaf.jpg" alt="ダージリン">
+                            <h3>
+                                <span class="title">ダージリン</span>
+                                <br>
+                                <span class="price">Hot
+                                    <br>600円（税込み）</span>
+                            </h3>
+                            <img src="./img/open_with.svg" class="modal_open">
+                        </li>
+                    </ul>
+                </div>
+            </section>
+    
+            <section id="food">
+                <div class="inner">
+                    <h2>
+                        <span>Food</span>フード</h2>
+                    <ul class="grid-blk">
+                        <li class="grid-item">
+                            <img src="./img/top_food.jpg" alt="スコーン">
+                            <h3>
+                                <span class="title">スコーン各種</span>
+                                <br>
+                                <span class="price">600円（税込み）</span>
+                            </h3>
+                        </li>
+                        <li class="grid-item">
+                            <img src="./img/tarte.jpg" alt="フルーツタルト">
+                            <h3>
+                                <span class="title">旬の果物のタルト</span>
+                                <br>
+                                <span class="price">600円（税込み）</span>
+                            </h3>
+                        </li>
+                        <li class="grid-item">
+                            <img src="./img/cheesecake.jpg" alt="チーズケーキ">
+                            <h3>
+                                <span class="title">チーズケーキ</span>
+                                <br>
+                                <span class="price">600円（税込み）</span>
+                            </h3>
+                        </li>
+                        <li class="grid-item">
+                            <img src="./img/pudding.jpg" alt="かぼちゃプリン">
+                            <h3>
+                                <span class="title">かぼちゃプリン</span>
+                                <br>
+                                <span class="price">600円（税込み）</span>
+                            </h3>
+                        </li>
+                        <li class="grid-item">
+                            <img src="./img/apple_pie.jpg" alt="アップルパイ">
+                            <h3>
+                                <span class="title">アップルパイ</span>
+                                <br>
+                                <span class="price">600円（税込み）</span>
+                            </h3>
+                        </li>
+                        <li class="grid-item">
+                            <img src="./img/sandwich_mix.jpg" alt="ミックスサンド">
+                            <h3>
+                                <span class="title">ミックスサンド</span>
+                                <br>
+                                <span class="price">600円（税込み）</span>
+                            </h3>
+                        </li>
+                        <li class="grid-item">
+                            <img src="./img/sandwich_egg.jpg" alt="たまごサンド">
+                            <h3>
+                                <span class="title">たまごサンド</span>
+                                <br>
+                                <span class="price">600円（税込み）</span>
+                            </h3>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+    
+            <section id="sns">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <img src="./img/icon_in_fff.svg" alt="instagram">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="./img/icon_x_fff.svg" alt="x(旧twitter)">
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <!-- フローティングボタン -->
+            <div class="float-btn-wrap">
+                <a href="" class="float-btn"><i class="fa-solid fa-chevron-up"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="copyright">© 2024 cafe Cat's Whiskers. All rights reserved.</p>
+    </footer>
+
+    <!-- モーダルウィンドウ -->
+    <div class="modal" id="modal_window">
+        <!-- モーダルウィンドウが開いている時のオーバーレイ -->
+        <div class="background_window"></div>
+        <!-- モーダルウィンドウの中身 -->
+        <div class="modal_base">
+            <!-- 表示内容 -->
+            <h2>
+                <span>Darjeeling</span>
+                <br>ダージリン</h2>
+            <p>ダージリンは、インド北東部、ヒマラヤ山脈の麓に広がる山岳地帯の地名であり、世界的な高級紅茶産地として知られています。ダージリン産を名乗ることができるのは、インド政府紅茶局が認定した87茶園の紅茶のみ。
+                <br> 当店では、旬ごとにダージリンティーを買い付け、季節の味わいをいち早くお届けしています。
+            </p>
+            <img src="./img/close.svg" alt="" id="modal_close">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>期間限定メニュー | cafe Cat’ Whiskers</title>
+    <meta name="description" content="紅茶専門のカフェ「Cat’ Whiskers」のWebサイトです。">
+    <meta name="keywords" content="紅茶,カフェ,シングルオリジン,猫のひげ">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="./icomoon/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Carattere&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/09bc1f0a04.js" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('#nav-toggle').on("click", function () {
+                $('body').toggleClass('open');
+            });
+            $('.move').on("click", function () {
+                $('body').toggleClass('open');
+            });
+        /*--スムーススクロール--*/
+        $('.move').on("click", function () {
+            let href = $(this).attr("href");
+            let target = $(href);
+            let position = target.offset().top;
+            $('body,html').animate({ scrollTop: position }, 400, 'swing');
+            return false;
+        });
+        });
+    </script>
+</head>
+
+<body id="seasonal">
+    <header id="page-header">
+        <div class="inner">
+            <h1 class="logo">
+                <a href="./index.html">
+                    <span class="icon-logo"></span>
+                </a>
+            </h1>
+
+            <div id="nav-toggle" class="sp">
+                <div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <nav class="header-nav">
+                    <div>
+                        <ul>
+                            <li>
+                                <a href="./index.html#news" class="move">お知らせ</a>
+                            </li>
+                            <li>
+                                <a href="./index.html#about" class="move">Cat’s Whiskersについて</a>
+                            </li>
+                            <li>
+                                <a href="./index.html#menu" class="move">メニュー</a>
+                            </li>
+                            <li>
+                                <a href="./about.html" class="move">店舗情報</a>
+                            </li>
+                            <li>
+                                <a href="./contact.html" class="move">お問合せ</a>
+                            </li>
+                        </ul>
+                        <ul class="sns_nav">
+                            <li>
+                                <a href="#">
+                                    <img src="./img/icon_in_fff.svg" alt="instagram">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="./img/icon_x_fff.svg" alt="x(旧twitter)">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                
+        </div>
+    </header>
+
+    <main>
+        <main>
+            <div class="wrapper">
+                <section>
+                    <div class="inner">
+                        <ul class="seasonal">
+                            <li>
+                                <time datetime="2024-07-01" class="day">2024/7/1</time>
+                                <div class="grid-blk">
+                                    <div class="grid-img">
+                                        <img src="./img/citrus_tea.jpg" alt="シトラスティー" class="photo">
+                                    </div>
+                                    <div class="grid-h">
+                                        <h2>
+                                            <span class="title">シトラスティー</span>
+                                            <br>
+                                            <span class="price">
+                                                Ice
+                                                <br>700円（税込み）</span>
+                                        </h2>
+                                    </div>
+                                    <div class="grid-p">
+                                        <p>アールグレイに柑橘のスライスとフルーツソースを加えた爽やかな一杯です。8月末までの期間限定です。</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <time datetime="2024-05-01" class="day">2024/5/1</time>
+                                <div class="grid-blk">
+                                    <div class="grid-img">
+                                        <img src="./img/buttabong.jpg" alt="ダージリン・プッタボン" class="photo">
+                                    </div>
+                            
+                                    <div class="grid-h">
+                                        <h2>
+                                            <span class="title">ダージリン・プッタボン</span>
+                                            <br>
+                                            <span class="price">
+                                                Hot / Ice
+                                                <br>700円（税込み）</span>
+                                        </h2>
+                                    </div>
+                                    <div class="grid-p">
+                                        <p>ダージリンで最古の茶園から届いた春の新茶（ファーストフラッシュ）です。なくなり次第販売終了です。 </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section id="sns">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <img src="./img/icon_in_fff.svg" alt="instagram">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="./img/icon_x_fff.svg" alt="x(旧twitter)">
+                                </a>
+                            </li>
+                        </ul>
+                    </section>        
+            </div>
+        </main>
+
+        <footer>
+            <p class="copyright">© 2024 cafe Cat's Whiskers. All rights reserved.</p>
+        </footer>
+</body>
+
+</html>

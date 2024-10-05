@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cafe Cat’ Whiskers</title>
+    <meta name="description" content="紅茶専門のカフェ「Cat’ Whiskers」のWebサイトです。">
+    <meta name="keywords" content="紅茶,カフェ,シングルオリジン,猫のひげ">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="./icomoon/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Carattere&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        $(function () {
+            //クラスの切り替え
+            $('#nav-toggle').on("click", function () {
+                $('body').toggleClass('open');
+            });
+            $('.move').on("click", function () {
+                $('body').toggleClass('open');
+            });
+            // スムーススクロール
+            $('.move').on("click", function () {
+                let href = $(this).attr("href");
+                let target = $(href);
+                let position = target.offset().top;
+                $('body,html').animate({ scrollTop: position }, 400, 'swing');
+                return false;
+            });
+        });
+    </script>
+
+</head>
+
+<body id="home">
+    <header id="page-header">
+        <div class="inner">
+            <h1 class="logo">
+                <a href="#home" class="move">
+                    <span class="icon-logo"></span>
+                </a>
+            </h1>
+    
+            <div id="nav-toggle" class="sp">
+                <div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+    
+            <nav class="header-nav">
+                <div>
+                    <ul>
+                        <li>
+                            <a href="#news" class="move">お知らせ</a>
+                        </li>
+                        <li>
+                            <a href="#about" class="move">Cat’s Whiskersについて</a>
+                        </li>
+                        <li>
+                            <a href="#menu" class="move">メニュー</a>
+                        </li>
+                        <li>
+                            <a href="./about.html" class="move">店舗情報</a>
+                        </li>
+                        <li>
+                            <a href="./contact.html" class="move">お問合せ</a>
+                        </li>
+                    </ul>
+                    <ul class="sns_nav">
+                        <li>
+                            <a href="#">
+                                <img src="./img/icon_in_fff.svg" alt="instagram">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./img/icon_x_fff.svg" alt="x(旧twitter)">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+        <div id="kv">
+            <p>紅茶好きの隠れ家へようこそ。</p>
+        </div>
+        <div class="wrapper">
+        <section id="news">
+            <h2>
+                <span>News</span>最新のお知らせ</h2>
+            <div class="inner">
+                <ul>
+                    <li>
+                        <time datetime="2024-08-21" class="day">2024/08/21</time>
+                        <p class="text">9月の定休日は第1・3火曜です。</p>
+                    </li>
+                    <li>
+                        <time datetime="2024-08-01" class="day">2024/08/01</time>
+                        <p class="text">8月14日から8月16日の営業時間は11時から21時です。</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    
+        <section id="about">
+            <h2>
+                <span>About</span>Cat’s Whiskersについて</h2>
+            <div class="inner">
+                <p>紅茶の豊かな香りに包まれ、静かに時間が流れるカフェ、Cat’s Whiskers。
+                    <br>わたしたちのカフェでは、季節ごとの特別なブレンドや希少なシングルオリジンティー、紅茶に合う軽食、スイーツをご用意しています。
+                    <br>ティーコーディネーターの資格を持つオーナーがお気に入りの一杯を見つけるお手伝いをいたします。
+                    <br>どうぞお気軽にお声掛けください。
+                    <br>当店で過ごすひと時が、あなたの日常をほんの少し彩りますように。</p>
+            </div>
+        </section>
+    
+        <section id="menu">
+            <div class="inner">
+                <h2>
+                    <span>Menu</span>メニュー</h2>
+                <div class="wrapper">
+                    <div class="item-container">
+                        <div class="item">
+                            <a href="./seasonal.html" class="btn">季節のおすすめを見る</a>
+                            <p class="photo">
+                                <img src="./img/top_season.jpg" alt="アイスティー">
+                            </p>
+                        </div>
+                    
+                        <div class="item">
+                            <a href="./standard.html" class="btn">定番の紅茶を見る</a>
+                            <p class="photo">
+                                <img src="./img/top_tea.jpg" alt="紅茶">
+                            </p>
+                        </div>
+                    
+                        <div class="item">
+                            <a href="./standard.html#food" class="btn">フードを見る</a>
+                            <p class="photo">
+                                <img src="./img/top_food.jpg" alt="食べ物">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section id="info">
+            <h2>
+                <span>Information</span>店舗情報</h2>
+            <div class="inner">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>営業時間</th>
+                            <td>10：00 - 21：00</td>
+                        </tr>
+                        <tr>
+                            <th>定休日</th>
+                            <td>不定休（
+                                <a href="#news" class="move">お知らせ</a>でご確認ください。）</td>
+                        </tr>
+                        <th>電話番号</th>
+                        <td>
+                            <a href="tel:000-000-0000">029-000-0000</a>
+                            <br> 時間帯によっては電話に出られない場合がございます。
+                        </td>
+                        <tr>
+                            <th>住所</th>
+                            <td>
+                                <address>茨城県つくば市000</address>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="./about.html" class="btn">詳しい店舗情報を見る</a>
+            </div>
+        </section>
+    
+        <section id="sns">
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="./img/icon_in_fff.svg" alt="instagram">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./img/icon_x_fff.svg" alt="x(旧twitter)">
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </div>
+    </main>
+
+    <footer>
+            <p class="copyright">© 2024 cafe Cat's Whiskers. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

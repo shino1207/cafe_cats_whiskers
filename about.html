@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>店舗情報 | cafe Cat’ Whiskers</title>
+    <meta name="description" content="紅茶専門のカフェ「Cat’ Whiskers」のWebサイトです。">
+    <meta name="keywords" content="紅茶,カフェ,シングルオリジン,猫のひげ">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="./icomoon/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Carattere&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/09bc1f0a04.js" crossorigin="anonymous"></script>
+    <script>
+    $(function() {
+        $('#nav-toggle').on("click",function() {
+            $('body').toggleClass('open');
+        });
+        $('.move').on("click", function(){
+            $('body').toggleClass('open');
+        });
+        /*--スムーススクロール--*/
+        $('.move').on("click", function () {
+            let href = $(this).attr("href");
+            let target = $(href);
+            let position = target.offset().top;
+            $('body,html').animate({ scrollTop: position }, 400, 'swing');
+            return false;
+        });
+    });
+    </script>
+</head>
+
+<body id="about">
+    <header id="page-header">
+        <div class="inner">
+                <h1 class="logo">
+                    <a href="./index.html"><span class="icon-logo"></span></a>
+                </h1>
+
+            <div id="nav-toggle" class="sp">
+                <div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <nav class="header-nav">
+                    <div>
+                        <ul>
+                            <li>
+                                <a href="./index.html#news" class="move">お知らせ</a>
+                            </li>
+                            <li>
+                                <a href="./index.html#about" class="move">Cat’s Whiskersについて</a>
+                            </li>
+                            <li>
+                                <a href="./index.html#menu" class="move">メニュー</a>
+                            </li>
+                            <li>
+                                <a href="./about.html" class="move">店舗情報</a>
+                            </li>
+                            <li>
+                                <a href="./contact.html" class="move">お問合せ</a>
+                            </li>
+                        </ul>
+                        <ul class="sns_nav">
+                            <li>
+                                <a href="#">
+                                    <img src="./img/icon_in_fff.svg" alt="instagram">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="./img/icon_x_fff.svg" alt="x(旧twitter)">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
+    </header>
+
+    <main>
+        <div class="wrapper">
+            <section id="shop">
+                <h2>
+                    <span>Shop Info</span>店舗情報</h2>
+                <div class="inner">
+                    <div class="shop-address shop-blk">
+                        <div class="shop-map">
+                            <div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6450.625735566585!2d140.1204409749146!3d36.06147220899421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60220cc765ef0abd%3A0x2b02eb5318e8f861!2z5rSe5bOw5YWs5ZyS!5e0!3m2!1sja!2sjp!4v1727742866453!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                            <div>
+                                <h3>住所</h3>
+                                <address>
+                                    <span>〒000-0000</span>
+                                    <br> 茨城県つくば市000
+                                    <!-- <a href="https://maps.app.goo.gl/3e81ESA5q2GkrQkS7" target="_blank" class="g-map">Google Map</a> -->
+                                </address>
+                            </div>
+                        </div>
+                        <img src="./img/store.jpg" alt="">
+                    </div>
+                    <div class="shop-phone shop-blk">
+                        <h3>電話番号</h3>
+                        <div>
+                            <a href="tel:000-000-0000">029-000-0000</a></div>
+                        <p>時間帯によっては電話に出られない場合がございます。</p>
+                    </div>
+                    <div class="shop-hours shop-blk">
+                        <h3>営業時間</h3>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>OPEN</th>
+                                    <td>09 : 00</td>
+                                </tr>
+                                <tr>
+                                    <th>CLOSE</th>
+                                    <td>21 : 00</td>
+                                </tr>
+                                <tr>
+                                    <th>定休日</th>
+                                    <td>不定休（お知らせで確認をお願いします。）
+                                        <br><a href="./index.html#news">お知らせはこちら</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="shop-seat shop-blk">
+                        <h3>座席数</h3>
+                        <div>24席</div>
+                    </div>
+                    <div class="shop-service shop-blk">
+                        <h3>その他</h3>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>Wi-Fi</th>
+                                    <td>catswhisker-WiFi</td>
+                                </tr>
+                                <tr>
+                                    <th>決済方法</th>
+                                    <td>交通系電子マネー
+                                        <br>コード決済</td>
+                                </tr>
+                                <tr>
+                                    <th>喫煙 /禁煙</th>
+                                    <td>全席禁煙</td>
+                                </tr>
+                                <tr>
+                                    <th>駐車場</th>
+                                    <td>店舗前3台</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+    
+            <section id="sns">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <img src="./img/icon_in_fff.svg" alt="instagram">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="./img/icon_x_fff.svg" alt="x(旧twitter)">
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+            <p class="copyright">© 2024 cafe Cat's Whiskers. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
