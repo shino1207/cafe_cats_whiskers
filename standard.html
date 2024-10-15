@@ -35,22 +35,53 @@
                 return false;
             });
 
-
-            console.log($(window).scrollTop());
             
         });
     </script>
     <!-- フロートボタン -->
-    <script>    
-        $(function () {
-            $(window).on("scroll", function () {
-                if ($(this).scrollTop() > 100) {
-                    $(".float-btn-wrap").fadeIn(300);
-                } else {
-                    $(".float-btn-wrap").fadeOut(300);
-                }
+    <script>
+            $(function () {
+                const pageTop = $(".float-btn-wrap");
+                pageTop.hide(); //最初は隠す
+                //ふんわり表示
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 100) {
+                        pageTop.fadeIn(300);
+                    } else {
+                        pageTop.fadeOut(300);
+                    }
+                });
+                //トップにスムーススクロール
+                pageTop.on("click", function () {
+                    $("body,html").animate({
+                        scrollTop: 0,
+                    }, 400);
+                    return false;
+                });
+
+                //フッター手前でストップ
+                $(".float-btn-wrap").hide();
+                $(window).on("scroll", function () {
+                    const scrollHeight = $(document).height();
+                    const scrollPosition = $(window).height() + $(window).scrollTop();
+                    const footHeight = $("footer").innerHeight();
+                    
+                    console.log($(window).scrollTop());
+                    console.log(scrollPosition);
+
+                    if (scrollHeight - scrollPosition <= footHeight) {
+                        $(".float-btn-wrap").css({
+                            position: "absolute",
+                            bottom: footHeight + 16,
+                        });
+                    } else {
+                        $(".float-btn-wrap").css({
+                            position: "fixed",
+                            bottom: "16px",
+                        });
+                    }
+                });
             });
-        });
     </script>
     <!-- モーダルウィンドウ -->
     <script>
@@ -81,9 +112,9 @@
             let iv_class = ".modal_base";
             $(iv_class).css({
                 position: "fixed",
-                top: "calc(100px + 2em)",
+                top: "55%",
                 left: "50%",
-                transform: "translate(-50%, 0)",
+                transform: "translate(-50%, -50%)",
                 zIndex: "9998",
                 backgroundColor: "#d5e5f2",
             });
@@ -130,7 +161,7 @@
                                 <a href="./index.html#menu" class="move">メニュー</a>
                             </li>
                             <li>
-                                <a href="./about.html" class="move">店舗情報</a>
+                                <a href="./index.html#info" class="move">店舗情報</a>
                             </li>
                             <li>
                                 <a href="./contact.html" class="move">お問合せ</a>
@@ -283,14 +314,6 @@
                             </h3>
                         </li>
                         <li class="grid-item">
-                            <img src="./img/apple_pie.jpg" alt="アップルパイ">
-                            <h3>
-                                <span class="title">アップルパイ</span>
-                                <br>
-                                <span class="price">600円（税込み）</span>
-                            </h3>
-                        </li>
-                        <li class="grid-item">
                             <img src="./img/sandwich_mix.jpg" alt="ミックスサンド">
                             <h3>
                                 <span class="title">ミックスサンド</span>
@@ -324,16 +347,17 @@
                     </li>
                 </ul>
             </section>
-            <!-- フローティングボタン -->
-            <div class="float-btn-wrap">
-                <a href="" class="float-btn"><i class="fa-solid fa-chevron-up"></i></a>
-            </div>
         </div>
     </main>
 
     <footer>
         <p class="copyright">© 2024 cafe Cat's Whiskers. All rights reserved.</p>
     </footer>
+
+    <!-- フローティングボタン -->
+    <div class="float-btn-wrap">
+        <a href="" class="float-btn"><i class="fa-solid fa-chevron-up"></i></a>
+    </div>
 
     <!-- モーダルウィンドウ -->
     <div class="modal" id="modal_window">

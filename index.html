@@ -12,16 +12,21 @@
     <link rel="stylesheet" href="./icomoon/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Carattere&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/09bc1f0a04.js" crossorigin="anonymous"></script>
+    <!-- グローバルナビゲーション -->
     <script>
         $(function () {
-            //クラスの切り替え
             $('#nav-toggle').on("click", function () {
                 $('body').toggleClass('open');
             });
             $('.move').on("click", function () {
                 $('body').toggleClass('open');
             });
-            // スムーススクロール
+        });
+    </script>
+    <!-- スムーススクロール -->
+    <script>
+        $(function () {
             $('.move').on("click", function () {
                 let href = $(this).attr("href");
                 let target = $(href);
@@ -30,6 +35,47 @@
                 return false;
             });
         });
+    </script>
+    <!-- フロートボタン -->
+    <script>
+            $(function () {
+                const pageTop = $(".float-btn-wrap");
+                pageTop.hide(); //最初は隠す
+                //ふんわり表示
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 100) {
+                        pageTop.fadeIn(300);
+                    } else {
+                        pageTop.fadeOut(300);
+                    }
+                });
+                //トップにスムーススクロール
+                pageTop.on("click", function () {
+                    $("body,html").animate({
+                        scrollTop: 0,
+                    }, 400);
+                    return false;
+                });
+
+                //フッター手前でストップ
+                $(".float-btn-wrap").hide();
+                $(window).on("scroll", function () {
+                    const scrollHeight = $(document).height();
+                    const scrollPosition = $(window).height() + $(window).scrollTop();
+                    const footHeight = $("footer").innerHeight();
+                    if (scrollHeight - scrollPosition <= footHeight) {
+                        $(".float-btn-wrap").css({
+                            position: "absolute",
+                            bottom: footHeight + 16,
+                        });
+                    } else {
+                        $(".float-btn-wrap").css({
+                            position: "fixed",
+                            bottom: "16px",
+                        });
+                    }
+                });
+            });
     </script>
 
 </head>
@@ -61,10 +107,10 @@
                             <a href="#about" class="move">Cat’s Whiskersについて</a>
                         </li>
                         <li>
-                            <a href="#menu" class="move">メニュー</a>
+                            <a href="#menu_estination" class="move">メニュー</a>
                         </li>
                         <li>
-                            <a href="./about.html" class="move">店舗情報</a>
+                            <a href="#info" class="move">店舗情報</a>
                         </li>
                         <li>
                             <a href="./contact.html" class="move">お問合せ</a>
@@ -124,7 +170,7 @@
     
         <section id="menu">
             <div class="inner">
-                <h2>
+                <h2 id="menu_estination">
                     <span>Menu</span>メニュー</h2>
                 <div class="wrapper">
                     <div class="item-container">
@@ -136,7 +182,7 @@
                         </div>
                     
                         <div class="item">
-                            <a href="./standard.html" class="btn">定番の紅茶を見る</a>
+                            <a href="./standard.html#tea" class="btn">定番の紅茶を見る</a>
                             <p class="photo">
                                 <img src="./img/top_tea.jpg" alt="紅茶">
                             </p>
@@ -205,6 +251,12 @@
     <footer>
             <p class="copyright">© 2024 cafe Cat's Whiskers. All rights reserved.</p>
     </footer>
+
+    <!-- フローティングボタン -->
+    <div class="float-btn-wrap">
+        <a href="" class="float-btn"><i class="fa-solid fa-chevron-up"></i></a>
+    </div>
+    
 </body>
 
 </html>

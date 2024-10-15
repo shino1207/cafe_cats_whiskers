@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script> <!--jQuery本体-->
     <script src="./js/jquery.validate.min.js"></script> <!--validationプラグイン-->
-    <script src="https://yubinbango.github.io/yubinbango/yubinbango.js"></script> <!--yubinbangoプラグイン-->
+    <script src="./js/yubinbango.js"></script> <!--yubinbangoプラグイン-->
     <script src="https://kit.fontawesome.com/09bc1f0a04.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./icomoon/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Carattere&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet"> 
@@ -27,6 +27,7 @@
             });
         });
     </script>
+
     <!-- スムーススクロール -->
     <script>
         $(function () {
@@ -39,12 +40,14 @@
             });
         });
     </script>
+
     <!-- エラーチェック -->
     <script>
         $(function () {
+            //入力チェック
             $("#form").validate({
                 rules: {
-                    name: {
+                    name: {　//name属性
                         required: true
                     },
                     tell: {
@@ -52,7 +55,10 @@
                     },
                     email: {
                         required: true
-                    }
+                    },
+                    agree: {
+                        required: true
+                    }                    
                 },
                 messages: {
                     name: {
@@ -63,24 +69,56 @@
                     },
                     email: {
                         required: "Eメールアドレスを入力してください。"
+                    },
+                    agree:{ 
+                        required: "チェックを入れてください。"
                     }
                 }
             });
         });
     </script>
-    <!-- フロートボタン -->
-    <script>    
-            $(function () {
-                $(window).on("scroll", function () {
-                    if ($(this).scrollTop() > 100) {
-                        $(".float-btn-wrap").fadeIn(300);
-                    } else {
-                        $(".float-btn-wrap").fadeOut(300);
-                    }
-                });
+ <!-- フロートボタン -->
+    <script>
+        $(function () {
+            const pageTop = $(".float-btn-wrap");
+            pageTop.hide(); //最初は隠す
+            //ふんわり表示
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    pageTop.fadeIn(300);
+                } else {
+                    pageTop.fadeOut(300);
+                }
             });
-        </script> 
-    <!-- モーダルウィンドウ -->      
+            //トップにスムーススクロール
+            pageTop.on("click", function () {
+                $("body,html").animate({
+                    scrollTop: 0,
+                }, 400);
+                return false;
+            });
+
+            //フッター手前でストップ
+            $(".float-btn-wrap").hide();
+            $(window).on("scroll", function () {
+                const scrollHeight = $(document).height();
+                const scrollPosition = $(window).height() + $(window).scrollTop();
+                const footHeight = $("footer").innerHeight();
+                if (scrollHeight - scrollPosition <= footHeight) {
+                    $(".float-btn-wrap").css({
+                        position: "absolute",
+                        bottom: footHeight + 16,
+                    });
+                } else {
+                    $(".float-btn-wrap").css({
+                        position: "fixed",
+                        bottom: "16px",
+                    });
+                }
+            });
+        });
+</script>
+<!-- モーダルウィンドウ -->      
     <script>
         //モーダル
         //表示範囲設定
@@ -109,13 +147,12 @@
             let iv_class = ".modal_base";
             $(iv_class).css({
                 position: "fixed",
-                top: "calc(100px + 2em)",
+                top: "55%",
                 left: "50%",
-                transform: "translate(-50%, 0)",
+                transform: "translate(-50%, -50%)",
                 zIndex: "9998",
                 backgroundColor: "#fff",
             });
-            // }
             //開くときの処理
             $(".modal_open").on("click", function () {
                 $("#modal_window").fadeIn();
@@ -123,6 +160,22 @@
             //閉じるときの処理
             $("#modal_close").on("click", function () {
                 $("#modal_window").fadeOut();
+            });
+        });
+    </script>
+
+    <!--チェックが入っていないと送信できないボタン-->  
+    <script>
+        $(function () {
+            $("#agree").change(function () {
+                // チェックが入っていたら有効化
+                if ($(this).is(":checked")) {
+                    // ボタンを有効化
+                    $("#button").prop("disabled", false);
+                } else {
+                    // ボタンを無効化
+                    $("#button").prop("disabled", true);
+                }
             });
         });
     </script>
@@ -157,7 +210,7 @@
                                 <a href="./index.html#menu" class="move">メニュー</a>
                             </li>
                             <li>
-                                <a href="./about.html" class="move">店舗情報</a>
+                                <a href="./index.html#info" class="move">店舗情報</a>
                             </li>
                             <li>
                                 <a href="./contact.html" class="move">お問合せ</a>
@@ -196,37 +249,38 @@
                                 <label for="name">お名前※</label>
                             </dt>
                             <dd>
-                                <input type="text" name="name" id="name" placeholder="例：茶猫あつこ">
+                                <input type="text" name="name" id="name" autocomplete="name" placeholder="例 : 茶猫あつこ">
                             </dd>
                             <dt>
                                 <label for="postnumber">郵便番号</label>
-                                <dd>
-                                    <input type="text" name="postnumber" id="postnumber" placeholder="例：3050000" value="" class="p-postal-code"/>
-                                </dd>
+                            <dd>
+                                <input type="text" name="postnumber" id="postnumber" placeholder="例 : 3050000" value=""
+                                    class="p-postal-code">
+                            </dd>
                             </dt>
                             <dt>
                                 <label for="pfef">都道府県（県）</label>
-                                <dd>
-                                    <input type="text" name="pref" id="pfef" value="" class="p-region" disabled/>
-                                </dd>
+                            <dd>
+                                <input type="text" name="pref" id="pfef" value="" class="p-region" disabled>
+                            </dd>
                             </dt>
                             <dt>
                                 <label for="pfef">都道府県（市町村以降）</label>
-                                <dd>
-                                    <input type="text" name="city" id="city" value="" class="p-locality p-street-address"disabled/>
-                                </dd>
+                            <dd>
+                                <input type="text" name="city" id="city" value="" class="p-locality p-street-address" disabled>
+                            </dd>
                             </dt>
                             <dt>
                                 <label for="tell">電話番号※</label>
                             </dt>
                             <dd>
-                                <input type="tel" name="tell" id="tell" placeholder="例：029-000-0000">
+                                <input type="tel" name="tell" id="tell" placeholder="例 : 029-000-0000">
                             </dd>
                             <dt>
                                 <label for="email">メールアドレス※</label>
                             </dt>
                             <dd>
-                                <input type="email" name="email" id="email" placeholder="例：shop@cafe_cats_wiskers.jp">
+                                <input type="email" name="email" id="email" autocomplete="email" placeholder="例 : shop@cafe_cats_wiskers.jp">
                             </dd>
                             <dt>
                                 <label for="message">お問合せ内容</label>
@@ -234,34 +288,28 @@
                             <dd>
                                 <textarea name="message" id="message" placeholder="お問い合わせ内容をご記入ください。" cols="30" rows="10"></textarea>
                             </dd>
-                            <dt>
-                                <label for="agree">同意事項 ※
-                            </dt>
-                            <dd>
-                                <label for="agree">プライバシーポリシーに同意する</label>
-                                <input type="checkbox" name="agree" value="同意事項" id="agree">
-                                <br>
-                                <a href="#" class="check-policy modal_open">プライバシーポリシーのご確認はこちら</a>
-                            </dd>
                         </dl>
-                        <p class="notes">
-                            <span>※</span>は必須項目です。</p>
-                        <input type="submit" value="送信する" class="btn">
+                        <div class="form-text">
+                            <p>内容を送信する前に<a href="#" class="check-policy modal_open">プライバシーポリシー</a>をご確認ください。</p>
+                            <input type="checkbox" name="agree" value="同意事項" id="agree">
+                            <label for="agree">プライバシーポリシーに同意する</label>
+                            <p class="notes"><span>※</span>は必須項目です。</p>
+                        </div>
+                            <input type="submit" value="送信する" id="button" class="btn" disabled>
                     </form>
                 </div>
             </section>
-            <!-- フローティングボタン -->
-            <div class="float-btn-wrap">
-                <a href="" class="float-btn">
-                    <i class="fa-solid fa-chevron-up"></i>
-                </a>
-            </div>               
         </div>
     </main>
     <footer>
             <p class="copyright">© 2024 cafe Cat's Whiskers. All rights reserved.</p>
     </footer>
 
+        <!-- フローティングボタン -->
+        <div class="float-btn-wrap">
+            <a href="" class="float-btn"><i class="fa-solid fa-chevron-up"></i></a>
+        </div>
+    
     <!-- モーダルウィンドウ -->
     <div class="modal" id="modal_window">
         <!-- モーダルウィンドウが開いている時のオーバーレイ -->
