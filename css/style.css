@@ -17,6 +17,7 @@ body {
     text-align: left;
     line-height: 2;
     -webkit-text-size-adjust: 100%;
+    position: relative; /*フロートボタン用*/
 }
 
 p {
@@ -103,7 +104,16 @@ address {
     color: #326C73;
 }
 
-header .logo   {
+.btn:disabled {
+    background: rgb(198, 198, 198);
+    border: none;
+}
+  
+.btn:disabled:hover {
+    color: #fff;
+}
+
+header .logo  {
     color: #262626;
     font-size: 5rem;
 }
@@ -113,21 +123,20 @@ header .logo   {
 }
 
 .float-btn-wrap{
-    display: none;
     width: 50px;
     height: 50px;
-    position: fixed;
     bottom: 1em;
     right: 1em;
     z-index: 10;
+    position: fixed;
 }
 
 .float-btn-wrap .float-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background-color: #0477BF;
     color: #fff;
@@ -180,7 +189,7 @@ header .logo   {
 footer {
     position: relative;
     box-sizing: border-box;
-    height: 60px;
+    height: 80px;
     padding: 10px;
     background: #326C73;
     color: #fff;
@@ -241,7 +250,6 @@ footer p {
 #home section,
 #about section,
 #seasonal section,
-#standard section,
 #contact section {
     padding: 0 0 100px;
 }
@@ -660,7 +668,7 @@ footer p {
 }
 
 #standard section {
-    padding-top: 50px
+    padding-top: 150px;
 }
 
 #standard h2 {
@@ -681,17 +689,6 @@ footer p {
     gap: 2em;
 }
 
-#standard .grid-blk::after {
-    content: "";
-    display: block;
-    width: 160px;
-    height: 200px;
-    background: url(../img/teacup.png) no-repeat bottom center / contain;
-    position: absolute;
-    bottom: 0;
-    right: 3em;
-}
-
 @media screen and (max-width: 591px) {
     #standard .grid-blk::after {
         display: none;
@@ -704,7 +701,6 @@ footer p {
     margin: 0 auto;
     /* box-shadow: 6px 6px 3px -3px rgba(0, 0, 0, .1); */
     position: relative;
-    z-index: 1;
 }
 
 #standard .grid-item img {
@@ -721,7 +717,7 @@ footer p {
 }
 
 #standard #sns {
-    padding-top: 0;
+    padding:100px 0;
 }
 
 #standard .grid-item .modal_open {
@@ -810,12 +806,6 @@ footer p {
 }
 
 /* フォーム */
-input:not(#agree),
-button,
-textarea,
-select {
-    appearance: none;
-}
 
 #contact form dl {
     display: flex;
@@ -846,6 +836,14 @@ select {
     box-sizing: border-box;
 }
 
+#contact input[type="checkbox"] {
+    inline-size: 1.6rem;
+    block-size: 1.6rem;
+    position: relative;
+    top: 3px;
+    /* visibility: hidden; */
+}
+
 #contact textarea {
     font-family:"Noto Sans JP", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic" , Sans-Serif;
     font-size: 1.6rem;
@@ -856,9 +854,19 @@ select {
     box-sizing: border-box;
 }
 
-#contact .notes {
-    margin: 0 0 30px calc(1.6rem * 12);
+#contact .form-text {
+    margin: 0 0 50px 12em;
+    position: relative;
 }
+
+#contact .form-text>p {
+    margin-bottom: 50px;
+}
+
+#contact .notes {
+    margin-top: 2em;
+}
+
 ::placeholder {
     color: #3498db;
 }
@@ -896,7 +904,7 @@ label.error::after {
     padding: 0 1em;
     margin: 1em auto;
     text-align: center;
-    font-size: 2em;
+    font-size: 1.8em;
     color: #262626;
 }
 
@@ -1020,6 +1028,7 @@ label.error::after {
         display: flex;
         flex-direction: column;
         gap: 2em;
+        width: 300px;
     }
 
     #page-header .header-nav div > ul {
@@ -1086,13 +1095,9 @@ label.error::after {
         margin-top: calc(100px + 500px);
     }
 
-    #home section {
-        padding: 0 0 80px;
-    }
-
     #home section h2 {
         text-align: center;
-        padding: 80px 0 40px;
+        padding: 100px 0 40px;
     }
 
     #home #kv {
@@ -1223,7 +1228,11 @@ label.error::after {
     }
 
     #standard section {
-        padding: 2em 1em 0;
+        padding: 100px 1em 0 ;
+    }
+
+    #standard section:first-child{
+        padding-top: calc(100px - 1em);
     }
 
     #standard #sns {
@@ -1233,12 +1242,12 @@ label.error::after {
     #standard #tea .inner,
     #standard #food .inner {
         width: auto;
-        padding: 1em 1em 2em;
+        padding: 0 1em;
         /* box-shadow: 6px 6px 3px -3px rgba(0, 0, 0, .1); */
     }
 
     #standard #food .inner {
-        padding-bottom: 4em;
+        padding-bottom: 100px;
     }
     
     #standard h2 {
@@ -1286,15 +1295,6 @@ label.error::after {
         border-radius: 4px;
     }
     
-    #standard #modal_window .modal_base h2 {
-        padding: 0 1em;
-        margin: 2em 0;
-    }
-
-    #standard #modal_window .modal_base h2 span {
-        font-size: 2em;
-    }
-
     #standard #modal_window .modal_base p {
         padding: 0 1em 5em;
         background: linear-gradient(to top, transparent 0%, #D5E5F2 60%, #D5E5F2 100%), url(../img/darjeeling_m.jpg)  no-repeat center 140px / 100% auto;
@@ -1323,7 +1323,7 @@ label.error::after {
       }
 
     #contact form dt {
-        margin-bottom: 10px;
+        margin-bottom: 2em;
         width: 100%;
     }
 
@@ -1337,30 +1337,14 @@ label.error::after {
     #contact input[type="tel"],
     #contact input[type="email"] {
         width: 100%;
-}
+    }
 
     #contact textarea {
         width: 100%;
     }
 
-    #contact .notes {
-        margin: 0 0 30px;
-    }
-
-   label.error {
-        left: auto;
-        right: 0;
-        bottom: 0;
-        transform: translateY(2.7em);
-    }
-
-    label.error::after {
-        top:auto;
-        bottom: 100%;
-        left:auto;
-        right: 15px;
-        border-top-color: transparent;
-        border-bottom-color: #f66;
+    #contact .form-text {
+        margin: 0 0 2em 0;
     }
     
 }
