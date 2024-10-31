@@ -249,6 +249,10 @@ footer p {
     background-color: #F2ECE4;
 }
 
+#standard .wrapper {
+    margin-top: 0;
+}
+
 #home section,
 #about section,
 #seasonal section,
